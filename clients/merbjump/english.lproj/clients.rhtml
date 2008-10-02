@@ -1,0 +1,60 @@
+<% view :clients_tab do %>
+<% form_view :client_details, :outlet => true do%>
+  <table class="client-detail">
+    <tr>
+      <td><label>First Name:</label></td>
+      <td>
+        <%= text_field_view :hint => "First Name",
+          :bind => {
+            :value => 'Basejump.clientController.firstname'
+          } %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Last Name:</label></td>
+      <td>
+        <%= text_field_view :hint => "Last Name",
+          :bind => {
+            :value => 'Basejump.clientController.lastname'
+          } %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>ID:</label></td>
+      <td>
+        <%= text_field_view :hint => "ID", :enabled => false,
+            :bind => {
+              :value => 'Basejump.clientController.guid'
+          } %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Rev:</label></td>
+      <td>
+        <%= text_field_view :hint => "Revision", :enabled => false,
+            :bind => {
+              :value => 'Basejump.clientController._rev'
+          } %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="buttons">
+        <%= button_view :title => "Delete",
+          :action => "Basejump.clientController.deleteClient" %>
+        <%= button_view :outlet => true,
+          :title => "Cancel",
+          :action => 'Basejump.clientController.discardChanges',
+          :bind => {
+            :enabled => 'Basejump.clientController.hasChanges'
+          } %>
+        <%= button_view :outlet => true,
+          :title => "Save Changes", :default => true,
+          :action => 'Basejump.clientController.saveChanges',
+          :bind => {
+            :enabled => "Basejump.clientController.canSaveDoc"
+          } %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+<% end %>

@@ -1,0 +1,48 @@
+body {
+ position: absolute ;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ padding: 0;
+ margin: 0;
+ overflow: hidden ;
+}
+
+.workspace .sidebar {
+ position: absolute;
+ left:  0;
+ top:  0;
+ width: 200px;
+ bottom: 0;
+}
+
+.header .client_search_field {
+  -webkit-appearance: searchfield;
+  -webkit-box-sizing: border-box;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  -moz-appearance:tabpanels;
+  margin:5px;
+}
+
+.workspace .client_list_collection {
+  
+}
+
+.workspace .sc-split-divider-view {
+ position: absolute;
+ left: 200px;
+ top: 0;
+ bottom: 0;
+}
+
+.workspace .main_content {
+ position: absolute;
+ left: 205px;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ border: none ;
+ padding:5px;
+}

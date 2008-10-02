@@ -1,0 +1,69 @@
+<% content_for('body') do %>
+
+
+<% view :header, :class => 'sc-header sc-square-theme' do %>
+  <div class="left">
+    <%= label_view :client_list_label, :value => "Client List", 
+      :bind => {
+        :is_visible => 'Basejump.masterController.sideBarVisible'
+      } %>
+    <%= text_field_view :client_search_field,
+          :hint => "Search" %>
+  </div>
+  <div class="center">
+    <%= label_view :selected_client_name, :value => "", 
+          :bind => {:value => 'Basejump.clientController.fullName'} %>
+  </div>
+  <div class="right">
+    <%= label_view :logged_in_user, :value => "No User",
+          :bind => {:value => 'Basejump.masterController.loggedInUser.userName'} %>
+  </div>
+<% end %>
+
+<% split_view :workspace, 
+  :class => 'sc-theme sc-app-workspace footer header', 
+  :direction => :horizontal,
+  :can_collapse_views => false do %>
+  
+  <% view :sidebar, :max_thickness => 300, :min_thickness => 150, :bind => { :is_collapsed => "SC.Binding.Not('Basejump.masterController.sideBarVisible')" } do %>
+      <%= list_view :client_list_collection, 
+        :row_height => 20,
+        :content_value_key => 'fullName',
+        :can_order_content => false,
+        :content_value_editable => false,
+        :bind => {
+          :content => 'Basejump.clientListController.arrangedObjects',
+          :selection => 'Basejump.clientListController.selection'
+        } %>
+  <% end %>
+
+  <%= split_divider_view :width => 5 %>
+
+  <% view :main_content do %>
+    <%= tab_view :control_tabs,
+               :lazy_tabs => true,
+               :now_showing => "welcome",
+               :segments => [
+                              [:welcome, "Overview"],
+                              [:clients, "Client Details"]
+                            ] %>
+  <% end %>
+<% end %>
+
+<% view :footer, :class => 'sc-footer sc-square-theme' do %>
+  <div class="left">
+    <%= button_view :label => '+', :action => 'Basejump.clientListController.addClient' %>
+    <%= button_view :label => '-', :action => 'Basejump.clientListController.deleteClient' %>
+    <%= button_view :client_list_refresh, 
+      :label => "Refresh", 
+      :action => "Basejump.clientListController.refresh" %>
+  </div>
+  <div class="center">
+    <%= segmented_view :action_tabs %>
+  </div>
+  <div class="right">
+    Right
+  </div>
+<% end %>
+
+<% end %>
