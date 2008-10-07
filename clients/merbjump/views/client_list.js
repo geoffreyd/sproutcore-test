@@ -14,7 +14,10 @@ require('core');
 */
 Basejump.ClientListView = SC.ListView.extend(
 /** @scope Basejump.ClientListView.prototype */ {
-
   
+  doubleClick: function( evt ) { 
+    Basejump.controlTabs.set('nowShowing', 'clients') ;
+    return true; 
+  }
 
 }) ;

@@ -19,6 +19,8 @@ Basejump.Client = SC.Record.extend(
   resourceURL: "rails/clients",
 //  type: "client",
   
+  bookings: SC.Record.hasMany('Basejump.Booking', 'client'),
+  
   properties: ['firstname', 'lastname'],
 
   fullName: function() {

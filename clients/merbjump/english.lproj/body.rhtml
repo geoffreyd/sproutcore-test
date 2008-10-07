@@ -26,8 +26,7 @@
   :can_collapse_views => false do %>
   
   <% view :sidebar, :max_thickness => 300, :min_thickness => 150, :bind => { :is_collapsed => "SC.Binding.Not('Basejump.masterController.sideBarVisible')" } do %>
-      <%= view :client_list_collection, 
-        :view => "Basejump.ClientListView",
+      <%= client_list_view :client_list_collection, 
         :row_height => 20,
         :content_value_key => 'fullName',
         :can_order_content => false,
@@ -46,7 +45,8 @@
                :now_showing => "welcome",
                :segments => [
                               [:welcome, "Overview"],
-                              [:clients, "Client Details"]
+                              [:clients, "Client Details"],
+                              [:bookings, "Bookings"]
                             ] %>
   <% end %>
 <% end %>

@@ -40,4 +40,9 @@ function main() {
   var c = Basejump.Client.collection();
   Basejump.clientListController.set('content', c);
   c.refresh();
+  
+  var b = Basejump.Booking.collection();
+  Basejump.bookingListController.set('content', b);
+  Basejump.bookingListController.set('orderBy', "date")
+  b.refresh();
 } ;

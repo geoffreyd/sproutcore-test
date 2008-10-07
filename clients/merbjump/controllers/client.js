@@ -18,6 +18,7 @@ Basejump.clientController = SC.ObjectController.create(
 
   recordType: Basejump.Client,
   dataSource: Basejump.server,
+  allowsMultipleContent: false,
 
   contentBinding: 'Basejump.clientListController*selection',
 
