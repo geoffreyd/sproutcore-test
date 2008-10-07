@@ -7,7 +7,7 @@
 # here.  SproutCore will automatically locate and load any bundles found in
 # your load path.  The sproutcore gem is automatically loaded for you.
 #
-require 'sproutcore'
+# require 'sproutcore'
 
 # This configuration section will be applied to all bundles used by your
 # application, even bundles that come from other gems.
@@ -16,7 +16,12 @@ config :all do |c|
   # Name any other frameworks your bundles depend upon.  The stylesheets and
   # JavaScript for required bundles will be loaded before your bundle on your
   # page.
-  c[:required] = [:sproutcore, :'geoffreyd-couchdb', :'geoffreyd-helpers']
+  c[:required] = [:sproutcore]
+
+  
+  # Set this to false to locate your clients at absolute paths.
+  # (Uncomment and define c[:resources_at] if you set this to false.)
+  # c[:resources_relative] = true
 
   # This string will be prepended before any URLs that reference JavaScript,
   # CSS or images in your files.
@@ -35,7 +40,6 @@ config :all do |c|
   # system, name the URLs you want to reference here.  These will be loaded
   # automatically.
   # c[:javascript_libs] = ['/javascript/scriptaculous.js']
-  c[:javascript_libs] = ['/rails/auth-token.js']
 
   # This is the preferred language.  When the user visits the root URL of
   # your client, this is the language they will get.  When looking for a
@@ -45,9 +49,10 @@ config :all do |c|
   # c[:preferred_language] = :fr
 
   # If you want to use a default root layout template other than the default
-  # provided by SproutCore, you can specifiy the path name to the index.html
+  # provided by SproutCore, you can specifiy the path name to the index.rhtml
   # here.  If you provide a relative path, SproutCore will assume the file
   # is relative to the root of this project.
+  #
   # c[:layout] = 'lib/index.rhtml'
 
   # This is the fully qualified path to the directory you want all of your
@@ -86,5 +91,3 @@ end
 #  c[:required] = [:sproutcore, :shared]
 # end
 #
-proxy '/data', :to => 'localhost:5984', :url => "/basejump"
-proxy '/rails', :to => 'localhost:3000', :url => ""
