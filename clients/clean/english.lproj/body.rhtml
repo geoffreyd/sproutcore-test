@@ -1,0 +1,24 @@
+<% content_for('body') do %>
+<% split_view :workspace, 
+  :class => 'sc-theme sc-app-workspace', 
+  :direction => :horizontal,
+  :can_collapse_views => true do %>
+  
+  <% view :sidebar, :max_thickness => 300, :collapse_at_thickness => 100,
+      :bind => {:is_collapsed => "Clean.masterController.sideBarCollapsed"} do %>
+      Side content
+  <% end %>
+
+  <%= split_divider_view %>
+
+  <% view :main_content, :can_collapse => false do %>
+    
+    <h1 style="padding-top:1em;">Main Content</h1>
+    <%= checkbox_view :toggle_check, :label => "Toggle Sidebar",
+        :bind => {:value => "Clean.masterController.sideBarCollapsed"} %>
+    <%= button_view :is_checked, :title => "is sidebar collapsed?",
+        :action => "alert($view('#sidebar').get('isCollapsed'))"%>
+  <% end %>
+  
+<% end %>
+<% end %>
